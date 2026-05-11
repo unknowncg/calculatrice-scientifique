@@ -1,0 +1,30 @@
+{
+  "name": "calculatrice-scientifique",
+  "version": "1.0.0",
+  "description": "Une calculatrice scientifique modulaire et intuitive pour les calculs du lycée",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "dev-node": "npx http-server",
+    "build": "echo 'Application front-end - Aucune build requise'",
+    "deploy": "echo 'Pousser vers GitHub Pages avec: git push origin main'"
+  },
+  "keywords": [
+    "calculatrice",
+    "scientifique",
+    "mathematiques",
+    "lycee",
+    "education",
+    "javascript"
+  ],
+  "author": "Bootcamp",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/votre-username/calculatrice-scientifique.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {}
+}

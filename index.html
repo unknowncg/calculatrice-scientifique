@@ -1,11 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculatrice Scientifique</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <div class="conteneur-principal">
+        <header class="en-tete">
+            <h1>🧮 Calculatrice Scientifique</h1>
+            <p class="sous-titre">Calculs avancés pour le lycée</p>
+        </header>
+
+        <main class="calculatrice">
+            <!-- Écran d'affichage -->
+            <div class="ecran">
+                <input 
+                    type="text" 
+                    id="affichage" 
+                    class="affichage-principal" 
+                    readonly 
+                    value="0"
+                    aria-label="Affichage principal"
+                >
+                <div class="affichage-historique" id="historique"></div>
+            </div>
+
+            <!-- Commandes générales -->
+            <div class="section-controles">
+                <button id="btnEffacer" class="btn btn-danger btn-large" title="Effacer tout">C</button>
+                <button id="btnRetour" class="btn btn-warning" title="Retour arrière">⌫</button>
+                <button id="btnMemoire" class="btn btn-info" title="Afficher/Masquer mémoire">M</button>
+            </div>
+
+            <!-- Panneau de mémoire -->
+            <div id="panneau-memoire" class="panneau-memoire masque">
+                <div class="titre-memoire">Mémoire</div>
+                <div id="valeur-memoire" class="valeur-memoire">0</div>
+                <div class="boutons-memoire">
+                    <button id="btnMC" class="btn btn-petit" title="Mémoire: Effacer">MC</button>
+                    <button id="btnMR" class="btn btn-petit" title="Mémoire: Rappeler">MR</button>
+                    <button id="btnMPlus" class="btn btn-petit" title="Mémoire: Ajouter">M+</button>
+                    <button id="btnMMoins" class="btn btn-petit" title="Mémoire: Soustraire">M-</button>
+                </div>
+            </div>
+
+            <!-- Sélecteur d'angles -->
+            <div class="selecteur-angles">
+                <label>Angles:</label>
+                <select id="selectAngle" class="select-angle">
+                    <option value="degres">Degrés (°)</option>
+                    <option value="radians">Radians (rad)</option>
+                </select>
+            </div>
+
+            <!-- Boutons Nombre et Opérateurs basiques -->
+            <div class="section-nombres-operateurs">
+                <div class="grille-nombres">
+                    <button class="btn btn-nombre">7</button>
+                    <button class="btn btn-nombre">8</button>
+                    <button class="btn btn-nombre">9</button>
+                    <button class="btn btn-nombre">/</button>
+
+                    <button class="btn btn-nombre">4</button>
+                    <button class="btn btn-nombre">5</button>
+                    <button class="btn btn-nombre">6</button>
+                    <button class="btn btn-nombre">*</button>
+
+                    <button class="btn btn-nombre">1</button>
+                    <button class="btn btn-nombre">2</button>
+                    <button class="btn btn-nombre">3</button>
+                    <button class="btn btn-nombre">-</button>
+
+                    <button class="btn btn-nombre">0</button>
+                    <button class="btn btn-nombre">.</button>
+                    <button id="btnEgal" class="btn btn-succes btn-large">= </button>
+                    <button class="btn btn-nombre">+</button>
+                </div>
+            </div>
+
+            <!-- Fonctions scientifiques - Ligne 1: Trigonométrie -->
+            <div class="section-scientifique">
+                <div class="titre-section">Trigonométrie</div>
+                <div class="grille-fonctions">
+                    <button id="btnSin" class="btn btn-fonction" data-fonction="sin">sin(x)</button>
+                    <button id="btnCos" class="btn btn-fonction" data-fonction="cos">cos(x)</button>
+                    <button id="btnTan" class="btn btn-fonction" data-fonction="tan">tan(x)</button>
+                    <button id="btnArcsin" class="btn btn-fonction" data-fonction="arcsin">arcsin(x)</button>
+                    <button id="btnArccos" class="btn btn-fonction" data-fonction="arccos">arccos(x)</button>
+                    <button id="btnArctan" class="btn btn-fonction" data-fonction="arctan">arctan(x)</button>
+                </div>
+            </div>
+
+            <!-- Fonctions scientifiques - Ligne 2: Logarithmes et exponentielles -->
+            <div class="section-scientifique">
+                <div class="titre-section">Logarithmes & Exponentielles</div>
+                <div class="grille-fonctions">
+                    <button id="btnLog" class="btn btn-fonction" data-fonction="log">log₁₀(x)</button>
+                    <button id="btnLn" class="btn btn-fonction" data-fonction="ln">ln(x)</button>
+                    <button id="btnExp" class="btn btn-fonction" data-fonction="exp">eˣ</button>
+                    <button id="btnPuissance" class="btn btn-fonction" data-fonction="puissance">xʸ</button>
+                    <button id="btnRacine" class="btn btn-fonction" data-fonction="racine">√(x)</button>
+                    <button id="btnRacineN" class="btn btn-fonction" data-fonction="racine-n">ⁿ√(x)</button>
+                </div>
+            </div>
+
+            <!-- Fonctions scientifiques - Ligne 3: Autres opérations -->
+            <div class="section-scientifique">
+                <div class="titre-section">Autres Opérations</div>
+                <div class="grille-fonctions">
+                    <button id="btnFactorielle" class="btn btn-fonction" data-fonction="factorielle">n!</button>
+                    <button id="btnPourcentage" class="btn btn-fonction" data-fonction="pourcentage">%</button>
+                    <button id="btnAbsolu" class="btn btn-fonction" data-fonction="absolu">|x|</button>
+                    <button id="btnParenthese" class="btn btn-fonction" data-fonction="parenthese">( )</button>
+                    <button id="btnPi" class="btn btn-constante" data-constante="pi">π</button>
+                    <button id="btnE" class="btn btn-constante" data-constante="e">e</button>
+                </div>
+            </div>
+
+            <!-- Historique -->
+            <div class="section-historique">
+                <button id="btnEffacerHistorique" class="btn btn-petit btn-warning">Effacer historique</button>
+                <div id="listeHistorique" class="liste-historique"></div>
+            </div>
+        </main>
+
+        <footer class="pied-de-page">
+            <p>© 2026 Calculatrice Scientifique | Déployée sur GitHub Pages</p>
+        </footer>
+    </div>
+
+    <!-- Scripts des modules -->
+    <script src="js/modules/operateurs.js"></script>
+    <script src="js/modules/fonctions-scientifiques.js"></script>
+    <script src="js/modules/gestion-memoire.js"></script>
+    <script src="js/modules/analyseur-expression.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

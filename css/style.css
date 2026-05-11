@@ -1,3 +1,482 @@
 /**
- * Styles for the scientific calculator
+ * ============================================
+ * CALCULATRICE SCIENTIFIQUE - STYLES
+ * Auteur: Bootcamp
+ * Description: Styles modulaires et responsifs
+ * ============================================
  */
+
+/* -------- VARIABLES CSS -------- */
+:root {
+    --couleur-primaire: #2196F3;
+    --couleur-secondaire: #FF9800;
+    --couleur-danger: #f44336;
+    --couleur-succes: #4CAF50;
+    --couleur-info: #00BCD4;
+    --couleur-warning: #FFC107;
+    --couleur-fond: #0f0f0f;
+    --couleur-surface: #1e1e1e;
+    --couleur-surface-alt: #2a2a2a;
+    --couleur-texte: #ffffff;
+    --couleur-texte-secondaire: #b0b0b0;
+    --couleur-bordure: #3a3a3a;
+    
+    --espace-petit: 0.5rem;
+    --espace-moyen: 1rem;
+    --espace-grand: 1.5rem;
+    
+    --rayon-border: 8px;
+    --rayon-border-grand: 12px;
+    
+    --transition-rapide: 150ms ease;
+    --transition-normal: 300ms ease;
+    
+    --police-principale: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* -------- RESET ET BASE -------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--police-principale);
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
+    line-height: 1.6;
+}
+
+/* -------- CONTENEUR PRINCIPAL -------- */
+.conteneur-principal {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: var(--espace-moyen);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* -------- EN-TÊTE -------- */
+.en-tete {
+    text-align: center;
+    margin-bottom: var(--espace-grand);
+    padding: var(--espace-grand) 0;
+    border-bottom: 2px solid var(--couleur-borderure);
+}
+
+.en-tete h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--couleur-primaire);
+    margin-bottom: var(--espace-petit);
+    text-shadow: 0 2px 10px rgba(33, 150, 243, 0.2);
+}
+
+.sous-titre {
+    font-size: 0.95rem;
+    color: var(--couleur-texte-secondaire);
+    font-weight: 300;
+}
+
+/* -------- CALCULATRICE - CONTENEUR PRINCIPAL -------- */
+.calculatrice {
+    background: linear-gradient(135deg, var(--couleur-surface) 0%, var(--couleur-surface-alt) 100%);
+    border-radius: var(--rayon-border-grand);
+    padding: var(--espace-grand);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-moyen);
+}
+
+/* -------- ÉCRAN D'AFFICHAGE -------- */
+.ecran {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    border: 2px solid var(--couleur-primaire);
+    border-radius: var(--rayon-border);
+    padding: var(--espace-moyen);
+    margin-bottom: var(--espace-moyen);
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(33, 150, 243, 0.1);
+}
+
+.affichage-principal {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--couleur-primaire);
+    font-size: 2.5rem;
+    text-align: right;
+    font-weight: bold;
+    outline: none;
+    font-family: 'Courier New', monospace;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.affichage-historique {
+    font-size: 0.85rem;
+    color: var(--couleur-texte-secondaire);
+    text-align: right;
+    margin-top: var(--espace-petit);
+    min-height: 1.2rem;
+    font-style: italic;
+}
+
+/* -------- BOUTONS - STYLES GÉNÉRAUX -------- */
+.btn {
+    padding: var(--espace-moyen);
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: var(--rayon-border);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: var(--police-principale);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Variantes de boutons */
+.btn-nombre {
+    background: var(--couleur-surface-alt);
+    color: var(--couleur-texte);
+    border-color: var(--couleur-bordure);
+}
+
+.btn-nombre:hover {
+    background: var(--couleur-primaire);
+    color: white;
+}
+
+.btn-danger {
+    background: var(--couleur-danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #e53935;
+}
+
+.btn-succes {
+    background: var(--couleur-succes);
+    color: white;
+}
+
+.btn-succes:hover {
+    background: #45a049;
+}
+
+.btn-warning {
+    background: var(--couleur-warning);
+    color: #000;
+}
+
+.btn-warning:hover {
+    background: #fbc02d;
+}
+
+.btn-info {
+    background: var(--couleur-info);
+    color: white;
+}
+
+.btn-info:hover {
+    background: #00acc1;
+}
+
+.btn-fonction {
+    background: var(--couleur-secondaire);
+    color: white;
+    font-size: 0.9rem;
+}
+
+.btn-fonction:hover {
+    background: #F57C00;
+}
+
+.btn-constante {
+    background: var(--couleur-primaire);
+    color: white;
+}
+
+.btn-constante:hover {
+    background: #1976D2;
+}
+
+/* Tailles de boutons */
+.btn-large {
+    grid-column: span 2;
+}
+
+.btn-petit {
+    padding: var(--espace-petit) var(--espace-moyen);
+    font-size: 0.85rem;
+}
+
+/* -------- SECTIONS DE CONTRÔLE -------- */
+.section-controles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espace-moyen);
+}
+
+.selecteur-angles {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-moyen);
+    padding: var(--espace-moyen);
+    background: var(--couleur-surface);
+    border-radius: var(--rayon-border);
+}
+
+.selecteur-angles label {
+    font-weight: 600;
+    color: var(--couleur-texte-secondaire);
+}
+
+.select-angle {
+    padding: var(--espace-petit) var(--espace-moyen);
+    background: var(--couleur-surface-alt);
+    color: var(--couleur-texte);
+    border: 2px solid var(--couleur-bordure);
+    border-radius: var(--rayon-border);
+    cursor: pointer;
+    transition: border-color var(--transition-rapide);
+    font-size: 0.9rem;
+}
+
+.select-angle:hover {
+    border-color: var(--couleur-primaire);
+}
+
+.select-angle:focus {
+    outline: none;
+    border-color: var(--couleur-primaire);
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+}
+
+/* -------- GRILLE DES NOMBRES ET OPÉRATEURS -------- */
+.section-nombres-operateurs {
+    width: 100%;
+}
+
+.grille-nombres {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--espace-moyen);
+    width: 100%;
+}
+
+/* -------- PANNEAU DE MÉMOIRE -------- */
+.panneau-memoire {
+    background: var(--couleur-surface);
+    border: 2px solid var(--couleur-info);
+    border-radius: var(--rayon-border);
+    padding: var(--espace-moyen);
+    transition: all var(--transition-normal);
+}
+
+.panneau-memoire.masque {
+    display: none;
+}
+
+.titre-memoire {
+    font-weight: bold;
+    color: var(--couleur-info);
+    margin-bottom: var(--espace-petit);
+    font-size: 0.9rem;
+}
+
+.valeur-memoire {
+    font-size: 1.5rem;
+    color: var(--couleur-texte);
+    font-family: 'Courier New', monospace;
+    margin-bottom: var(--espace-moyen);
+    word-break: break-all;
+    background: var(--couleur-surface-alt);
+    padding: var(--espace-petit) var(--espace-moyen);
+    border-radius: var(--rayon-border);
+}
+
+.boutons-memoire {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espace-petit);
+}
+
+/* -------- SECTIONS SCIENTIFIQUES -------- */
+.section-scientifique {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-moyen);
+}
+
+.titre-section {
+    font-weight: bold;
+    color: var(--couleur-secondaire);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: var(--espace-petit);
+    border-bottom: 2px solid var(--couleur-secondaire);
+}
+
+.grille-fonctions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--espace-moyen);
+}
+
+/* -------- SECTION HISTORIQUE -------- */
+.section-historique {
+    margin-top: var(--espace-grand);
+    padding-top: var(--espace-grand);
+    border-top: 2px solid var(--couleur-bordure);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-moyen);
+}
+
+.liste-historique {
+    background: var(--couleur-surface);
+    border-radius: var(--rayon-border);
+    padding: var(--espace-moyen);
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--couleur-bordure);
+}
+
+.element-historique {
+    padding: var(--espace-petit) var(--espace-moyen);
+    background: var(--couleur-surface-alt);
+    border-radius: var(--rayon-border);
+    margin-bottom: var(--espace-petit);
+    font-size: 0.9rem;
+    color: var(--couleur-texte-secondaire);
+    cursor: pointer;
+    transition: all var(--transition-rapide);
+}
+
+.element-historique:hover {
+    background: var(--couleur-primaire);
+    color: white;
+}
+
+.element-historique:last-child {
+    margin-bottom: 0;
+}
+
+/* -------- PIED DE PAGE -------- */
+.pied-de-page {
+    text-align: center;
+    margin-top: auto;
+    padding-top: var(--espace-grand);
+    border-top: 2px solid var(--couleur-bordure);
+    font-size: 0.85rem;
+    color: var(--couleur-texte-secondaire);
+}
+
+/* -------- SCROLLBAR PERSONNALISÉE -------- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--couleur-surface);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--couleur-primaire);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1976D2;
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 768px) {
+    .conteneur-principal {
+        padding: var(--espace-petit);
+    }
+
+    .en-tete h1 {
+        font-size: 2rem;
+    }
+
+    .calculatrice {
+        padding: var(--espace-moyen);
+    }
+
+    .affichage-principal {
+        font-size: 2rem;
+    }
+
+    .grille-nombres {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--espace-petit);
+    }
+
+    .grille-fonctions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .btn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .en-tete h1 {
+        font-size: 1.5rem;
+    }
+
+    .affichage-principal {
+        font-size: 1.75rem;
+    }
+
+    .grille-nombres {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .grille-fonctions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-controles {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .btn {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-large {
+        grid-column: span 1;
+    }
+}
